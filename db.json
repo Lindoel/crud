@@ -1,0 +1,81 @@
+{
+  "clients": [
+    {
+      "name": "Marcos Vinicius",
+      "email": "marcos@gmail.com",
+      "number": "12121",
+      "cep": "13215-792",
+      "logradouro": "Avenida Benedicto Fagundes",
+      "district": "Champirra",
+      "city": "Jundiaí",
+      "uf": "SP",
+      "id": 1
+    },
+    {
+      "name": "Lindoel Gomes Damasceno",
+      "email": "Lindoel@gmail.com",
+      "number": "433434",
+      "cep": "63708-729",
+      "logradouro": "Rua 13",
+      "district": "Venâncios",
+      "city": "Crateús",
+      "uf": "CE",
+      "id": 2
+    },
+    {
+      "name": "Marcela De Sousa Ferreira",
+      "email": "joao@gmail.com",
+      "number": "232323",
+      "cep": "13215-845",
+      "logradouro": "Via de Pedestre Martins Pereira",
+      "district": "Recanto Champirra",
+      "city": "Jundiaí",
+      "uf": "SP",
+      "id": 3
+    },
+    {
+      "name": "Marcos",
+      "email": "marcos@gmail.com",
+      "number": "23434",
+      "cep": "13215-797",
+      "logradouro": "Rua das Flores",
+      "district": "Champirra",
+      "city": "Jundiaí",
+      "uf": "SP",
+      "id": 5
+    },
+    {
+      "name": "Yago",
+      "email": "yago@gmail.com",
+      "number": "121232323",
+      "cep": "13215-793",
+      "logradouro": "Travessa Solar das Andorinhas",
+      "district": "Champirra",
+      "city": "Jundiaí",
+      "uf": "SP",
+      "id": 6
+    },
+    {
+      "name": "Marcelo",
+      "email": "marcelo@gmail.com",
+      "number": "121212",
+      "cep": "13215-792",
+      "logradouro": "Avenida Benedicto Fagundes",
+      "district": "Champirra",
+      "city": "Jundiaí",
+      "uf": "SP",
+      "id": 8
+    },
+    {
+      "name": "Fernando",
+      "email": "Fernando@gmail.com",
+      "number": "11155443",
+      "cep": "63708-723",
+      "logradouro": "Rua 12",
+      "district": "Venâncios",
+      "city": "Crateús",
+      "uf": "CE",
+      "id": 9
+    }
+  ]
+}

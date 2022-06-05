@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="./global.css">
+
+    <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" 
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" 
+    crossorigin="anonymous">
+
+    <!-- JavaScript Bundle with Popper -->
+
+    <script 
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" 
+    crossorigin="anonymous">
+    
+</script>
+</head>
+<body class=".bg-warning">
+    <nav class="navbar">
+        <div class="container-fluid">
+          <a onclick="newClientModal()" class="navbar-brand" href="#">
+            <i class="bi bi-person-plus-fill"></i>
+            Novo cliente
+          </a>
+          <i onclick="downloadXls()" id="download_xls" class="bi bi-box-arrow-down">Baixar arquivo xls</i>
+        </div>
+    </nav>
+
+      <main>
+        <table class="table table-dark table-striped">
+          <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Cep</th>
+                <th scope="col">Logradouro</th>
+                <th scope="col">Bairro</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">UF</th>
+                <th scope="col">Ações</th>
+              </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+      </main>
+
+      <dialog id="modal">
+        <form name="form" method="dialog" class="row g-3">
+          <div id="button_modal_close">
+            <i onclick="closeModalClient()" class="bi bi-x-circle-fill"></i>
+          </div>
+          <div class="col-md-6">
+            <label for="inputName" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="inputName" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputEmail" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="inputEmail" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputNumber" class="form-label">Telefone</label>
+            <input type="number" class="form-control" id="inputNumber" required>
+          </div>
+          
+          <div class="col-md-6">
+            <label for="inputCep" class="form-label">Cep</label>
+            <input onblur="foundCepInput()" type="text" class="form-control" id="inputCep" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputlogradouro" class="form-label">logradouro</label>
+            <input type="text" class="form-control" id="inputlogradouro" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputDistrict" class="form-label">Bairro</label>
+            <input type="text" class="form-control" id="inputDistrict" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">Cidade</label>
+            <input type="text" class="form-control" id="inputCity" required>
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputUf" class="form-label">UF</label>
+            <input type="text" class="form-control" id="inputUF" required>
+          </div>
+
+
+          <div class="col-12">
+            <button type="reset" class="btn btn-dark">Limpar</button>
+            <button type="submit" class="btn btn-dark">Salvar</button>
+          </div>
+        </form>
+      </dialog>
+
+      <dialog id="modalEdit">
+        <form name="formEdit" method="dialog" class="row g-3">
+          <div id="button_modal_close">
+            <i onclick="closeModalClientEdit()" class="bi bi-x-circle-fill"></i>
+          </div>
+          <div class="col-md-6">
+            <label for="inputName" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="inputName">
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputEmail" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="inputEmail">
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputNumber" class="form-label">Telefone</label>
+            <input type="number" class="form-control" id="inputNumber">
+          </div>
+
+          <div class="col-md-6" id="formCepEdit">
+            <label for="inputCep" class="form-label">Cep</label>
+            <input onblur="foundCepInputEdit()" type="text" class="form-control" id="inputCep">
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputlogradouro" class="form-label">logradouro</label>
+            <input type="text" class="form-control" id="inputlogradouro">
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputDistrict" class="form-label">Bairro</label>
+            <input type="text" class="form-control" id="inputDistrict">
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputCity" class="form-label">Cidade</label>
+            <input type="text" class="form-control" id="inputCity">
+          </div>
+
+          <div class="col-md-6">
+            <label for="inputUf" class="form-label">UF</label>
+            <input type="text" class="form-control" id="inputUF">
+          </div>
+
+
+          <div class="col-12">
+            <button type="reset" class="btn btn-dark">Limpar</button>
+            <button onclick="editClientSubmit()" type="submit" class="btn btn-dark">Editar</button>
+          </div>
+        </form>
+      </dialog>
+
+      <span id="table_xls">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>E-mail</th>
+              <th>Telefone</th>
+              <th>Cep</th>
+              <th>Logradouro</th>
+              <th>Bairro</th>
+              <th>Cidade</th>
+              <th>UF</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </span>
+
+      <footer>
+        <div>
+          <h3>Endereço</h3>
+          <a target="_blank" href="https://www.google.com/maps/@-23.0941907,-46.849252,182m/data=!3m1!1e3!5m1!1e4">
+                  <p class="address_localization">
+                      Av. Benedicto Fagundes
+                  </p>
+              </a>
+        </div>
+
+        <div>
+          <h3>Contato</h3>
+          <a target="_blank" href="https://www.instagram.com/lindoel_gomes/"><i class="bi bi-instagram"></i>Acessar Instagram</a>
+          
+          <a target="_blank" href="https://www.linkedin.com/in/lindoel-gomes-131217200/"><i class="bi bi-linkedin"></i>Acessar Linkedin</a>
+          
+          <a target="_blank" href="https://github.com/Lindoel"><i class="bi bi-github"></i>Acessar Github</a>
+          
+          <p><i class="bi bi-envelope"></i>lindoegomesdamasceno@gmail.com</p>
+        </div>
+
+        <span>
+          <h3>&copy;LindoelGomes2022</h3>
+        </span>
+      </footer>
+
+      <script src="./index.js" type="module"></script>
+</body>
+</html>
